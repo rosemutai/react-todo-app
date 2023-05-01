@@ -1,7 +1,7 @@
 import TodoItem from "./TodoItem";
 
 /* eslint-disable react/prop-types */
-const TodosList = ({ todosProps, handleChange, deleteTodo }) => {
+const TodosList = ({ todosProps, handleChange, deleteTodo, setUpdate }) => {
   return (
     <ul>
       {todosProps.map((todo) => (
@@ -10,6 +10,7 @@ const TodosList = ({ todosProps, handleChange, deleteTodo }) => {
           itemProp={todo}
           handleChange={handleChange}
           deleteTodo={deleteTodo}
+          setUpdate={setUpdate}
         />
       ))}
     </ul>

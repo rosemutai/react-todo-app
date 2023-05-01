@@ -1,10 +1,16 @@
+import Header from "./components/Header";
+import TodosLogic from "./components/TodosLogic";
+
 function App() {
 
   return (
-    <>
-     <h1>To Do List</h1>
-    </>
-  )
+    <div className="wrapper">
+      <div className="todos">
+        <Header />
+        <TodosLogic />
+      </div>
+    </div>
+  );
 }
 
 export default App

@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import styles from "../styles/TodoItem.module.css";
+import { useAuthContext } from "../context/AuthContext";
 
 const TodoItem = ({ itemProp, handleChange, deleteTodo, setUpdate }) => {
 
   const [editing, setEditing] = useState(false);
+  const { user } = useAuthContext();
 
   const handleEditing = () => {
     setEditing(true);
@@ -39,7 +41,9 @@ const TodoItem = ({ itemProp, handleChange, deleteTodo, setUpdate }) => {
           checked={itemProp.completed}
           onChange={() => handleChange(itemProp.id)}
         />
-        <button onClick={handleEditing}>Edit</button>
+        {user && (
+          <button onClick={handleEditing}>Edit</button>
+        )}
         <button onClick={() => deleteTodo(itemProp.id)}>Delete</button>
         <span style={itemProp.completed ? completedStyle : null}>
           {itemProp.title}

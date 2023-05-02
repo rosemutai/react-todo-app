@@ -6,6 +6,7 @@ import Profile from "./routes/Profile";
 import NotMatch from "./routes/NotMatch";
 import Layout from "./components/Layout";
 import SinglePage from "./routes/SinglePage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
 
@@ -18,7 +19,9 @@ function App() {
             <Route path=":slug" element={<SinglePage />}/>
           </Route>
           <Route path="login" element={<Login />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile" element={<ProtectedRoute />}>
+            <Route path="profile" element={<Profile />} />
+          </Route>
           <Route path="*" element={<NotMatch />} />
         </Route>
       </Routes>

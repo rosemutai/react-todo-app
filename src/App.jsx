@@ -1,15 +1,28 @@
-import Header from "./components/Header";
-import TodosLogic from "./components/TodosLogic";
+import { Route, Routes } from "react-router-dom";
+import Home from "./routes/Home";
+import About from "./routes/About";
+import Login from "./routes/Login";
+import Profile from "./routes/Profile";
+import NotMatch from "./routes/NotMatch";
+import Layout from "./components/Layout";
+import SinglePage from "./routes/SinglePage";
 
 function App() {
 
   return (
-    <div className="wrapper">
-      <div className="todos">
-        <Header />
-        <TodosLogic />
-      </div>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />}>
+            <Route path=":slug" element={<SinglePage />}/>
+          </Route>
+          <Route path="login" element={<Login />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="*" element={<NotMatch />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
